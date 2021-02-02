@@ -1,62 +1,35 @@
 
 /* add code here  */
+window.addEventListener('load', funnction(){
 
-function firstblur(){
-    var title=document.getElementById("title");
-    title.classList.remove("highlightable");
-    }
-    function secondblur(){
-    var description=document.getElementById("description");
-    description.classList.remove("highlightable");
-    }
-    function thirdblur(){
-    var medium=document.getElementById("medium");
-    medium.classList.remove("highlightable");
-    }
-        
-    function firstfocus(){
-    var title=document.getElementById("title");
-    title.classList.add("highlightable");
-    title.classList.remove("error");
-    }
-    function secondfocus(){
-    var description=document.getElementById("description");
-    description.classList.add("highlightable");
-    description.classList.remove("error");
-    }
-    function thirdfocus(){
-    var medium=document.getElementById("medium");
-    medium.classList.add("highlightable");
-    medium.classList.remove("error");
-    }
-    
-    function preventDefault(){
-    var title=document.getElementById("title");
-    var description=document.getElementById("description");
-    var medium=document.getElementById("medium");
-    var year=document.getElementById("year");
-    var museum=document.getElementById("museum");
-    
-    if(title.value==""){
-    title.classList.add("error");
-    }
-    else{
-    title.classList.remove("error");
-    }
-    
-    if(description.value==""){
-    des.classList.add("error");
-    }
-    else{
-    description.classList.remove("error");
-    }
-    
-    if(year.value==""){
-    year.classList.add("error");
-    }
-    else{
-    year.classList.remove("error");
-    }
-    
-    return(false);
+var hilightableInputs = document.querySelectorAll('.hilightableInputs');
+for(i=0; i < hilightableInputs.length; i++) {
+var toggle = (event) => { event.target.classLsit.toggle('hilight')}
+hilightableInputs[i].addEventListener('focus',toggle)
+hilightableInputs[i].addEventListener('blur',toggle)
 }
+
+var form = document.getelementById("mainForm");
+form.addEventListener("submit", submissionCheck);
+function submissionCheck(event){
+var requiredInputs = document.querySelectorAll(".required");
+for(i-0; i < requiredInputs.length; i++)
+{
+if(requiredInputs[i].value == "")
+{
+event.preventDefault();
+requiredInputs[i].classList.add("error");
+}
+else {
+requiredInputs[i].classList.remove("error");
+}
+form.addEventListener('reset',resetform)
+
+function resetform(event){
+var requiredInputs = document.querySelectorAll(".required");
+for(i-0; i < requiredInputs.length; i++){
+requiredInputs[i].classList.remove("error");
+}
+
+}
+})
